@@ -1,6 +1,6 @@
 # Unity WebGL CI/CD with GitHub Actions
 
-WebGL published here (EDIT IT!) https://TuckerBeard.github.io/UnityBoilerplate/
+WebGL published here (EDIT IT!) https://FinalProjectGPR.github.io/UnityBoilerplate/
  
 # Setup Steps:
 
