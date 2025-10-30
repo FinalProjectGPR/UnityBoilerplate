@@ -7,22 +7,21 @@ public class SelectorScript : MonoBehaviour
     public GameObject selectedObject;
     public bool hasSelected;
     public bool isPlacing;
-    public Rigidbody rb;
+    public Rigidbody2D rb;
     public float speed = 3f;
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector3(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed, 0);
-        Debug.Log(Input.GetAxis("Jump"));
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
     }
 
-    public void OnTriggerStay(Collider collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
         if (Input.GetAxis("Jump") != 0 && !hasSelected)
         {
