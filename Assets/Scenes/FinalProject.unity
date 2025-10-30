@@ -179,6 +179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855201534}
   - component: {fileID: 855201533}
+  - component: {fileID: 855201535}
   m_Layer: 0
   m_Name: StuffSpawner
   m_TagString: Untagged
@@ -253,6 +254,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855201535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855201532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426cf090df395054983102f7fde9ad56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stuff:
+  - {fileID: 6700144299621946602, guid: 91b8fa7f511753746be2142b82ad0b38, type: 3}
 --- !u!1 &1589584266
 GameObject:
   m_ObjectHideFlags: 0
