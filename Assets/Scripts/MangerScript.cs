@@ -5,7 +5,7 @@ using UnityEngine;
 public class MangerScript : MonoBehaviour
 {
     public GameObject[] cursors;
-
+    public bool allPlayersSelected;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,12 @@ public class MangerScript : MonoBehaviour
             {
                 break;
             }
+            allPlayersSelected = true;
+        }
+        if (allPlayersSelected == true)
+        {
             Debug.Log("All players have selected items!");
+            allPlayersSelected = false;
         }
     }
 }
