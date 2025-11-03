@@ -41,7 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2200204722628984064}
   - component: {fileID: 6680115635620919602}
-  - component: {fileID: -3445681728974023978}
+  - component: {fileID: 2349852899168942307}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Gun
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3445681728974023978
+--- !u!114 &2349852899168942307
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,9 +132,9 @@ MonoBehaviour:
   firePoint: {fileID: 9094867115133582761}
   bullet: {fileID: 7235148492803724005, guid: ccd5ded74d58986489eb03f636ef98c2, type: 3}
   currentBullet: {fileID: 0}
-  bulletSpeed: 0
-  aliveTime: 0
-  numBullets: 0
+  bulletSpeed: 5
+  aliveTime: 1
+  numBullets: 1
   bulletSpread: 0
   timeOut: 1
   timeRemaining: 0

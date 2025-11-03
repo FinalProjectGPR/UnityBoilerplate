@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PistolScript : MonoBehaviour
+public class GunScript : MonoBehaviour
 {
     string currentFireButton = "";
     public GameObject firePoint;
