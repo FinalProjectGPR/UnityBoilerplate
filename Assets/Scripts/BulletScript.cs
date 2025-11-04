@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public int direction = 1;
 
     public float speed;
     public float aliveTime;

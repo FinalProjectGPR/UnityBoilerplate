@@ -13,12 +13,16 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    public string playerFireButton = "Player1Fire";
+    public GameObject objectHeld;
+    private bool currentlyHolding = false;
+
 
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") != 0 && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
@@ -48,6 +52,26 @@ public class PlayerMovementScript : MonoBehaviour
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+            if(objectHeld != null && objectHeld.GetComponent<GunScript>() != null)
+            {
+                objectHeld.GetComponent<GunScript>().bulletSpeed *= -1;
+            }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetAxis("Player1Pickup") != 0 && !currentlyHolding)
+        {
+            if(collision.tag == "Pickupable")
+            {
+                objectHeld = collision.GetComponent<SpawnerScript>().thingCurrentlySpawned;
+                collision.GetComponent<SpawnerScript>().thingCurrentlySpawned = null;
+                objectHeld.GetComponent<GunScript>().currentFireButton = playerFireButton;
+                objectHeld.transform.position = new Vector3(.5f, 0f, 0f);
+                objectHeld.transform.SetParent(gameObject.transform, false);
+                currentlyHolding = true;
+            }
         }
     }
 }

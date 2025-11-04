@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GunScript : MonoBehaviour
 {
-    string currentFireButton = "";
+    public string currentFireButton = "";
     public GameObject firePoint;
     public GameObject bullet;
     public GameObject currentBullet;
@@ -21,7 +21,7 @@ public class GunScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentFireButton = "Player1Fire";
+
     }
 
     // Update is called once per frame
