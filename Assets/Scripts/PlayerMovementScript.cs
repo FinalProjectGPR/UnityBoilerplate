@@ -70,6 +70,7 @@ public class PlayerMovementScript : MonoBehaviour
                 objectHeld.GetComponent<GunScript>().currentFireButton = playerFireButton;
                 objectHeld.transform.position = new Vector3(.5f, 0f, 0f);
                 objectHeld.transform.SetParent(gameObject.transform, false);
+                objectHeld.GetComponent<GunScript>().bulletSpeed *= transform.localScale.x;
                 currentlyHolding = true;
             }
         }
