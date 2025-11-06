@@ -20,6 +20,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     void Update()
     {
+        if(PauseManager.isPaused)
+        {
+            return;
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
