@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SelectorScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class SelectorScript : MonoBehaviour
     public bool isPlacing;
     public Rigidbody2D rb;
     public float speed = 3f;
+    public GameObject spawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +27,7 @@ public class SelectorScript : MonoBehaviour
     {
         if (Input.GetAxis("Jump") != 0 && !hasSelected)
         {
+            spawner.GetComponent<StuffSpawnerScript>().stuffSpawned[Array.IndexOf(spawner.GetComponent<StuffSpawnerScript>().stuffSpawned, collision.gameObject)] = null;
             selectedObject = collision.gameObject;
             selectedObject.SetActive(false);
             gameObject.SetActive(false);

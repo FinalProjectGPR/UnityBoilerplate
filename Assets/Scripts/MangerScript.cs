@@ -6,6 +6,11 @@ public class MangerScript : MonoBehaviour
 {
     public GameObject[] cursors;
     public bool allPlayersSelected;
+    public GameObject spawner;
+    public bool isSelecting = true;
+    public bool isPlacing = false;
+    public bool isPlaying = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,18 +20,23 @@ public class MangerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for(int i = 0; i < cursors.Length; i++)
+        if (isSelecting)
         {
-            if (cursors[i].activeSelf == true)
+
+            for (int i = 0; i < cursors.Length; i++)
             {
-                break;
+                if (cursors[i].activeSelf == true)
+                {
+                    break;
+                }
+                allPlayersSelected = true;
             }
-            allPlayersSelected = true;
-        }
-        if (allPlayersSelected == true)
-        {
-            Debug.Log("All players have selected items!");
-            allPlayersSelected = false;
+            if (allPlayersSelected == true)
+            {
+                spawner.GetComponent<StuffSpawnerScript>().destroyRemaining();
+                spawner.SetActive(false);
+                allPlayersSelected = false;
+            }
         }
     }
 }
