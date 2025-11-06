@@ -76,14 +76,20 @@ public class PlayerMovementScript : MonoBehaviour
                 currentlyHolding = true;
             }
         }
+
         if (collision.tag == "Bullet")
         {
             maxPlayerHP = (maxPlayerHP - pistolDamage);
             
             if (maxPlayerHP <= 0)
             {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
+        }
+
+        if (collision.tag == "Death Floor")
+        {
+                gameObject.SetActive(false);
         }
     }
 }
