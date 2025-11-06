@@ -19,6 +19,11 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.isPaused)
+        {
+            return;
+        }
+
         aliveTime -= Time.deltaTime;
         if(aliveTime <= 0)
         {

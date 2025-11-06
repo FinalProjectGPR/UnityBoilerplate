@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovementScript : MonoBehaviour
 {
+    public float maxPlayerHP = 5;
+    public float pistolDamage = 1;
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -20,6 +22,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     void Update()
     {
+        if(PauseManager.isPaused)
+        {
+            return;
+        }
+
         horizontal = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
@@ -73,6 +80,21 @@ public class PlayerMovementScript : MonoBehaviour
                 objectHeld.GetComponent<GunScript>().bulletSpeed *= transform.localScale.x;
                 currentlyHolding = true;
             }
+        }
+
+        if (collision.tag == "Bullet")
+        {
+            maxPlayerHP = (maxPlayerHP - pistolDamage);
+            
+            if (maxPlayerHP <= 0)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+
+        if (collision.tag == "Death Floor")
+        {
+                gameObject.SetActive(false);
         }
     }
 }
