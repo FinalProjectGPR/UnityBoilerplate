@@ -134,9 +134,9 @@ MonoBehaviour:
   bullet: {fileID: 7235148492803724005, guid: ccd5ded74d58986489eb03f636ef98c2, type: 3}
   currentBullet: {fileID: 0}
   bulletSpeed: 7
-  aliveTime: 0.3
-  numBullets: 10
-  bulletSpread: 45
+  aliveTime: 1
+  numBullets: 1
+  bulletSpread: 0
   timeOut: 1
   timeRemaining: 0
   canFire: 0

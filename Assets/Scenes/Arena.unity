@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &288203007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &393749515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,7 +256,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursors:
   - {fileID: 622126549}
+  players:
+  - {fileID: 1316492945}
   allPlayersSelected: 0
+  allPlayersDead: 0
   spawner: {fileID: 288203006}
   isSelecting: 1
   isPlacing: 0
@@ -307,7 +310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &622126550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +360,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.375, y: 0.375}
@@ -529,6 +532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d944207b91c174b898c1446be53439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxPlayerHP: 5
+  pistolDamage: 1
   rb: {fileID: 1316492948}
   groundCheck: {fileID: 1403451128}
   groundLayer:

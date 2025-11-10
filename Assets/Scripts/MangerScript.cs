@@ -5,7 +5,9 @@ using UnityEngine;
 public class MangerScript : MonoBehaviour
 {
     public GameObject[] cursors;
+    public GameObject[] players;
     public bool allPlayersSelected;
+    public bool allPlayersDead;
     public GameObject spawner;
     public bool isSelecting = true;
     public bool isPlacing = false;
@@ -36,7 +38,45 @@ public class MangerScript : MonoBehaviour
                 spawner.GetComponent<StuffSpawnerScript>().destroyRemaining();
                 spawner.SetActive(false);
                 allPlayersSelected = false;
+                isSelecting = false;
+                isPlaying = true;
+                PauseManager.isPaused = false;
+                setAllActive(players);
             }
+        }
+        if (isPlaying)
+        {
+            for(int i = 0; i < players.Length; i++)
+            {
+                if(players[i].activeSelf == true)
+                {
+                    break;
+                }
+                allPlayersDead = true;
+            }
+            if (allPlayersDead)
+            {
+                PauseManager.isPaused = true;
+                spawner.SetActive(true);
+                spawner.GetComponent<StuffSpawnerScript>().spawnStuff();
+                allPlayersSelected = false;
+                isSelecting = true;
+                isPlaying = false;
+                allPlayersDead = false;
+                for(int i = 0; i < cursors.Length; i++)
+                {
+                    cursors[i].SetActive(true);
+                    cursors[i].GetComponent<SelectorScript>().hasSelected = false;
+                }
+            }
+        }
+    }
+
+    public void setAllActive(GameObject[] objects)
+    {
+        for(int i = 0; i < objects.Length; i++)
+        {
+            objects[i].SetActive(true);
         }
     }
 }

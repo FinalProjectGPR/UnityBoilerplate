@@ -19,6 +19,10 @@ public class SpawnerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.isPaused)
+        {
+            return;
+        }
         if(thingCurrentlySpawned == null)
         {
             timeRemaining -= Time.deltaTime;

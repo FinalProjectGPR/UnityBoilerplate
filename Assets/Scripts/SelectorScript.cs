@@ -31,6 +31,7 @@ public class SelectorScript : MonoBehaviour
             selectedObject = collision.gameObject;
             selectedObject.SetActive(false);
             gameObject.SetActive(false);
+            hasSelected = true;
         }
     }
 }
