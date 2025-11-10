@@ -27,7 +27,12 @@ public class GunScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(currentFireButton != "")
+        if (PauseManager.isPaused)
+        {
+            return;
+        }
+
+        if (currentFireButton != "")
         {
             if (Input.GetAxis(currentFireButton) != 0 && canFire)
             {
