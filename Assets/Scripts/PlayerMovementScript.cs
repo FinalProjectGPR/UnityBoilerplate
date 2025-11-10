@@ -10,8 +10,8 @@ public class PlayerMovementScript : MonoBehaviour
     private float speed = 8f;
     private float jumpingPower = 16f;
     private bool isFacingRight = true;
-    public float spawnX = -7.87;
-    public float spawnY = -0.71;
+    public float spawnX = -7.87f;
+    public float spawnY = -0.71f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
