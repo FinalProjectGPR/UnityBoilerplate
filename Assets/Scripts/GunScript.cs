@@ -42,6 +42,7 @@ public class GunScript : MonoBehaviour
                     currentBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                     currentBullet.GetComponent<BulletScript>().speed = bulletSpeed;
                     currentBullet.GetComponent<BulletScript>().aliveTime = aliveTime;
+                    currentBullet.GetComponent<CircleCollider2D>().isTrigger = false;
                 }
                 else
                 {

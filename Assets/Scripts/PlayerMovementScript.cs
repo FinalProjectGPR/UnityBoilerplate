@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour
 {
     public float maxPlayerHP = 5;
-    public float pistolDamage = 1;
     private float horizontal;
     private float speed = 8f;
     private float jumpingPower = 16f;
@@ -40,6 +39,12 @@ public class PlayerMovementScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
+        if (objectHeld == null)
+        {
+            currentlyHolding = false;
+        }
+
+        
         Flip();
     }
 
@@ -72,7 +77,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         if (Input.GetAxis("Player1Pickup") != 0 && !currentlyHolding)
         {
-            if(collision.tag == "Pickupable")
+            if(collision.tag == "Pickupable" && collision.GetComponent<SpawnerScript>().thingCurrentlySpawned != null)
             {
                 objectHeld = collision.GetComponent<SpawnerScript>().thingCurrentlySpawned;
                 collision.GetComponent<SpawnerScript>().thingCurrentlySpawned = null;
@@ -83,20 +88,26 @@ public class PlayerMovementScript : MonoBehaviour
                 currentlyHolding = true;
             }
         }
-
-        if (collision.tag == "Bullet")
-        {
-            maxPlayerHP = (maxPlayerHP - pistolDamage);
-            
-            if (maxPlayerHP <= 0)
-            {
-                gameObject.SetActive(false);
-            }
-        }
-
         if (collision.tag == "Death Floor")
         {
                 gameObject.SetActive(false);
+        }
+    }
+
+    public void takeDamage(int amount)
+    {
+        maxPlayerHP -= amount;
+        if(maxPlayerHP <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!IsGrounded() && rb.velocity.y == 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - 5f);
         }
     }
 }

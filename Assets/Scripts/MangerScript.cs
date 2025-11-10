@@ -41,6 +41,12 @@ public class MangerScript : MonoBehaviour
                 isSelecting = false;
                 isPlaying = true;
                 PauseManager.isPaused = false;
+                for(int i = 0; i < players.Length; i++)
+                {
+                    players[i].transform.position = new Vector2(players[i].GetComponent<PlayerMovementScript>().spawnX, players[i].GetComponent<PlayerMovementScript>().spawnY);
+                    players[i].GetComponent<PlayerMovementScript>().maxPlayerHP = 5;
+                    Destroy(players[i].GetComponent<PlayerMovementScript>().objectHeld);
+                }
                 setAllActive(players);
             }
         }
