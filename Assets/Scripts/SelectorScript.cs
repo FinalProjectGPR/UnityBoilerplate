@@ -29,9 +29,16 @@ public class SelectorScript : MonoBehaviour
         {
             spawner.GetComponent<StuffSpawnerScript>().stuffSpawned[Array.IndexOf(spawner.GetComponent<StuffSpawnerScript>().stuffSpawned, collision.gameObject)] = null;
             selectedObject = collision.gameObject;
+            selectedObject.transform.SetParent(gameObject.transform, false);
+            selectedObject.transform.localPosition = new Vector3(-.5f + (selectedObject.transform.localScale.x/2), .5f - (selectedObject.transform.localScale.y/2), 0);
             selectedObject.SetActive(false);
             gameObject.SetActive(false);
             hasSelected = true;
+        }
+        if(Input.GetAxis("Jump") != 0 && hasSelected && MangerScript.isPlaying)
+        {
+            selectedObject.transform.SetParent(null, false);
+            selectedObject = null;
         }
     }
 }

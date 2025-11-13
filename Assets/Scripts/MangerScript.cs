@@ -9,9 +9,9 @@ public class MangerScript : MonoBehaviour
     public bool allPlayersSelected;
     public bool allPlayersDead;
     public GameObject spawner;
-    public bool isSelecting = true;
-    public bool isPlacing = false;
-    public bool isPlaying = false;
+    public static bool isSelecting = true;
+    public static bool isPlacing = false;
+    public static bool isPlaying = false;
 
     // Start is called before the first frame update
     void Start()
