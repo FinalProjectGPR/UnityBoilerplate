@@ -97,6 +97,7 @@ public class MangerScript : MonoBehaviour
                 {
                     cursors[i].SetActive(true);
                     cursors[i].GetComponent<SelectorScript>().hasSelected = false;
+                    cursors[i].transform.position = cursors[i].GetComponent<SelectorScript>().startingCoords;
                 }
             }
         }

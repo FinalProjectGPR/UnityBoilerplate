@@ -11,6 +11,7 @@ public class SelectorScript : MonoBehaviour
     public Rigidbody2D rb;
     public float speed = 3f;
     public GameObject spawner;
+    public Vector3 startingCoords = new Vector3(-6f, 5.5f, -2.2f);
     // Start is called before the first frame update
     void Start()
     {
