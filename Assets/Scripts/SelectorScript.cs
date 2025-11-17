@@ -21,6 +21,12 @@ public class SelectorScript : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
+        if (Input.GetAxis("Jump") != 0 && hasSelected && MangerScript.isPlaying==true)
+        {
+            selectedObject.transform.SetParent(null, false);
+            selectedObject = null;
+            gameObject.SetActive(false);
+        }
     }
 
     public void OnTriggerStay2D(Collider2D collision)
@@ -34,11 +40,6 @@ public class SelectorScript : MonoBehaviour
             selectedObject.SetActive(false);
             gameObject.SetActive(false);
             hasSelected = true;
-        }
-        if(Input.GetAxis("Jump") != 0 && hasSelected && MangerScript.isPlaying)
-        {
-            selectedObject.transform.SetParent(null, false);
-            selectedObject = null;
         }
     }
 }

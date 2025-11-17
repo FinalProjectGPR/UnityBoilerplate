@@ -8,6 +8,7 @@ public class MangerScript : MonoBehaviour
     public GameObject[] players;
     public bool allPlayersSelected;
     public bool allPlayersDead;
+    public bool allPlayersPlaced;
     public GameObject spawner;
     public static bool isSelecting = true;
     public static bool isPlacing = false;
@@ -39,8 +40,7 @@ public class MangerScript : MonoBehaviour
                 spawner.SetActive(false);
                 allPlayersSelected = false;
                 isSelecting = false;
-                isPlaying = true;
-                PauseManager.isPaused = false;
+                isPlacing = true;
                 for(int i = 0; i < players.Length; i++)
                 {
                     players[i].transform.position = new Vector2(players[i].GetComponent<PlayerMovementScript>().spawnX, players[i].GetComponent<PlayerMovementScript>().spawnY);
@@ -48,6 +48,25 @@ public class MangerScript : MonoBehaviour
                     Destroy(players[i].GetComponent<PlayerMovementScript>().objectHeld);
                 }
                 setAllActive(players);
+                setAllActive(cursors);
+            }
+        }
+        if (isPlacing)
+        {
+            for(int i = 0; i < cursors.Length; i++)
+            {
+                if (cursors[i].activeSelf == true)
+                {
+                    break;
+                }
+                allPlayersPlaced = true;
+            }
+            if (allPlayersPlaced == true)
+            {
+                PauseManager.isPaused = false;
+                allPlayersPlaced = false;
+                isPlacing = false;
+                isPlaying = true;
             }
         }
         if (isPlaying)
