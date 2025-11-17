@@ -44,11 +44,16 @@ public class MangerScript : MonoBehaviour
                 for(int i = 0; i < players.Length; i++)
                 {
                     players[i].transform.position = new Vector2(players[i].GetComponent<PlayerMovementScript>().spawnX, players[i].GetComponent<PlayerMovementScript>().spawnY);
+                    //players[i].GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
                     players[i].GetComponent<PlayerMovementScript>().maxPlayerHP = 5;
                     Destroy(players[i].GetComponent<PlayerMovementScript>().objectHeld);
                 }
                 setAllActive(players);
                 setAllActive(cursors);
+                for(int i = 0; i < cursors.Length; i++)
+                {
+                    cursors[i].GetComponent<SelectorScript>().selectedObject.SetActive(true);
+                }
             }
         }
         if (isPlacing)
