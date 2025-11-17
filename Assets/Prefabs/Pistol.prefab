@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2200204722628984064}
   - component: {fileID: 6680115635620919602}
   - component: {fileID: 2349852899168942307}
+  - component: {fileID: -1179890057933936821}
   m_Layer: 0
   m_Name: Pistol
   m_TagString: Gun
@@ -140,3 +141,15 @@ MonoBehaviour:
   timeOut: 1
   timeRemaining: 0
   canFire: 0
+--- !u!114 &-1179890057933936821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9165882093674740504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bf595e7a66795c47a599daad80e2f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

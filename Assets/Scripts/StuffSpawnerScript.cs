@@ -26,7 +26,7 @@ public class StuffSpawnerScript : MonoBehaviour
         stuffSpawned = new GameObject[] { null, null, null, null, null };
         for (int i = 0; i < coords.Length/2; i++)
         {
-            stuffSpawned[i] = Instantiate(stuff[Random.Range(0, stuff.Length)], transform.position + new Vector3(coords[i, 0], coords[i, 1], 0), transform.rotation);
+            stuffSpawned[i] = Instantiate(stuff[Random.Range(0, stuff.Length)], transform.position + new Vector3(coords[i, 0], coords[i, 1], -.1f), transform.rotation);
         }
     }
 

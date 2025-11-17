@@ -21,9 +21,10 @@ public class SelectorScript : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
-        if (Input.GetAxis("Jump") != 0 && hasSelected && MangerScript.isPlaying==true)
+        if (Input.GetButtonDown("Jump") && hasSelected && MangerScript.isPlacing==true)
         {
-            selectedObject.transform.SetParent(null, false);
+            selectedObject.transform.SetParent(null, true);
+            selectedObject.transform.position = selectedObject.transform.position - new Vector3(0f, 0f, selectedObject.transform.position.z - .1f);
             selectedObject = null;
             gameObject.SetActive(false);
         }
@@ -31,7 +32,7 @@ public class SelectorScript : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetAxis("Jump") != 0 && !hasSelected)
+        if (Input.GetAxis("Jump") != 0 && !hasSelected && collision.gameObject.transform.position.z == -2.1f)
         {
             spawner.GetComponent<StuffSpawnerScript>().stuffSpawned[Array.IndexOf(spawner.GetComponent<StuffSpawnerScript>().stuffSpawned, collision.gameObject)] = null;
             selectedObject = collision.gameObject;
