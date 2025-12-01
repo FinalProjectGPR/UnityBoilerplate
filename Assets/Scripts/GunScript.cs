@@ -40,7 +40,7 @@ public class GunScript : MonoBehaviour
                 {
                     firePoint.transform.localEulerAngles = new Vector3(0, 0, 0);
                     currentBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-                    currentBullet.GetComponent<BulletScript>().speed = bulletSpeed;
+                    currentBullet.GetComponent<BulletScript>().speed = bulletSpeed + transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x;
                     currentBullet.GetComponent<BulletScript>().aliveTime = aliveTime;
                     currentBullet.GetComponent<CircleCollider2D>().isTrigger = false;
                 }
@@ -49,9 +49,10 @@ public class GunScript : MonoBehaviour
                     firePoint.transform.localEulerAngles = new Vector3(0, 0, (bulletSpread / 2));
                     for (int i = 0; i < numBullets; i++)
                     {
+                        Debug.Log(transform.parent.gameObject.GetComponent<Rigidbody2D>().velocity.x);
                         currentBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                         firePoint.transform.localEulerAngles = new Vector3(0, 0, firePoint.transform.localEulerAngles.z - (bulletSpread / (numBullets - 1)));
-                        currentBullet.GetComponent<BulletScript>().speed = bulletSpeed;
+                        currentBullet.GetComponent<BulletScript>().speed = bulletSpeed + transform.parent.GetComponent<Rigidbody2D>().velocity.x;
                         currentBullet.GetComponent<BulletScript>().aliveTime = aliveTime;
                     }
                 }
