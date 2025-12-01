@@ -23,13 +23,21 @@ public class SelectorScript : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
+        //Collider2D overlaps = Physics2D.OverlapBox(selectedObject.transform.position, selectedObject.transform.localScale, 0f);
         if (Input.GetButtonDown("Jump") && hasSelected && MangerScript.isPlacing==true)
         {
-            selectedObject.transform.SetParent(null, true);
-            selectedObject.transform.position = selectedObject.transform.position - new Vector3(0f, 0f, selectedObject.transform.position.z - .1f);
-            selectedObject.GetComponent<Collider2D>().isTrigger = selectedIsTrigger;
-            selectedObject = null;
             gameObject.SetActive(false);
+            if(Physics2D.OverlapBox(selectedObject.transform.position, selectedObject.transform.localScale, 0f) == null)
+            {
+                selectedObject.transform.SetParent(null, true);
+                selectedObject.transform.position = selectedObject.transform.position - new Vector3(0f, 0f, selectedObject.transform.position.z - .1f);
+                selectedObject.GetComponent<Collider2D>().isTrigger = selectedIsTrigger;
+                selectedObject = null;
+            }
+            else
+            {
+                gameObject.SetActive(true);
+            }
         }
     }
 
