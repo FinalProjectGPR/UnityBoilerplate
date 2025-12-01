@@ -12,6 +12,7 @@ public class SelectorScript : MonoBehaviour
     public float speed = 3f;
     public GameObject spawner;
     public Vector3 startingCoords = new Vector3(-6f, 5.5f, -2.2f);
+    public bool selectedIsTrigger = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class SelectorScript : MonoBehaviour
         {
             selectedObject.transform.SetParent(null, true);
             selectedObject.transform.position = selectedObject.transform.position - new Vector3(0f, 0f, selectedObject.transform.position.z - .1f);
+            selectedObject.GetComponent<Collider2D>().isTrigger = selectedIsTrigger;
             selectedObject = null;
             gameObject.SetActive(false);
         }
@@ -39,6 +41,7 @@ public class SelectorScript : MonoBehaviour
             selectedObject = collision.gameObject;
             selectedObject.transform.SetParent(gameObject.transform, false);
             selectedObject.transform.localPosition = new Vector3(-.5f + (selectedObject.transform.localScale.x/2), .5f - (selectedObject.transform.localScale.y/2), 0);
+            selectedIsTrigger = selectedObject.GetComponent<Collider2D>().isTrigger;
             selectedObject.SetActive(false);
             gameObject.SetActive(false);
             hasSelected = true;
