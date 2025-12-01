@@ -53,6 +53,7 @@ public class MangerScript : MonoBehaviour
                 for(int i = 0; i < cursors.Length; i++)
                 {
                     cursors[i].GetComponent<SelectorScript>().selectedObject.SetActive(true);
+                    cursors[i].GetComponent<SelectorScript>().selectedObject.GetComponent<Collider2D>().isTrigger = true;
                 }
             }
         }
