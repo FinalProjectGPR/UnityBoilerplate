@@ -31,4 +31,11 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
+    public void goInstructions()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
+
+
 }
