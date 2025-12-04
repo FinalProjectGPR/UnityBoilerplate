@@ -17,6 +17,9 @@ public class PlayerMovementScript : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
 
     public string playerFireButton = "Player1Fire";
+    public string playerJumpButton = "Jump";
+    public string playerHorizontalMovement = "Horizontal";
+    public string playerPickupButton = "Player1Pickup";
     public GameObject objectHeld;
     private bool currentlyHolding = false;
 
@@ -28,13 +31,13 @@ public class PlayerMovementScript : MonoBehaviour
             return;
         }
 
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = Input.GetAxisRaw(playerHorizontalMovement);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown(playerJumpButton) && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
         }
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp(playerJumpButton) && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
@@ -80,7 +83,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetAxis("Player1Pickup") != 0 && !currentlyHolding)
+        if (Input.GetAxis(playerPickupButton) != 0 && !currentlyHolding)
         {
             if(collision.tag == "Pickupable" && collision.GetComponent<SpawnerScript>().thingCurrentlySpawned != null)
             {

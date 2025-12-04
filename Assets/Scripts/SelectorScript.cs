@@ -13,6 +13,9 @@ public class SelectorScript : MonoBehaviour
     public GameObject spawner;
     public Vector3 startingCoords = new Vector3(-6f, 5.5f, -2.2f);
     public bool selectedIsTrigger = false;
+    public string selectorChooseButton = "Jump";
+    public string selectorHorizontalAxis = "Horizontal";
+    public string selectorVerticalAxis = "Vertical";
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +25,8 @@ public class SelectorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(Input.GetAxis("Horizontal")*speed, Input.GetAxis("Vertical")*speed);
-        if (Input.GetButtonDown("Jump") && hasSelected && MangerScript.isPlacing==true)
+        rb.velocity = new Vector2(Input.GetAxis(selectorHorizontalAxis)*speed, Input.GetAxis(selectorVerticalAxis)*speed);
+        if (Input.GetButtonDown(selectorChooseButton) && hasSelected && MangerScript.isPlacing==true)
         {
             selectedObject.transform.SetParent(null, true);
             selectedObject.transform.position = selectedObject.transform.position - new Vector3(0f, 0f, selectedObject.transform.position.z - .1f);
@@ -35,7 +38,7 @@ public class SelectorScript : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetAxis("Jump") != 0 && !hasSelected && collision.gameObject.transform.position.z == -2.1f)
+        if (Input.GetAxis(selectorChooseButton) != 0 && !hasSelected && collision.gameObject.transform.position.z == -2.1f)
         {
             spawner.GetComponent<StuffSpawnerScript>().stuffSpawned[Array.IndexOf(spawner.GetComponent<StuffSpawnerScript>().stuffSpawned, collision.gameObject)] = null;
             selectedObject = collision.gameObject;
