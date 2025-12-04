@@ -156,6 +156,8 @@ MonoBehaviour:
   stuff:
   - {fileID: 4702771137767043899, guid: c43a582991cf0e14bbb8c6b0468718a9, type: 3}
   - {fileID: 8400462682627238556, guid: c693f3cf63598384c802a3c23352b781, type: 3}
+  - {fileID: 8400462682627238556, guid: d4ca2af5139fbe746ad9dcfe466d7637, type: 3}
+  - {fileID: 8400462682627238556, guid: 2099226b2add1d84fad9af0d138d3d68, type: 3}
   stuffSpawned: []
 --- !u!212 &288203008
 SpriteRenderer:
