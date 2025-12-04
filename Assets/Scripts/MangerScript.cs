@@ -14,12 +14,12 @@ public class MangerScript : MonoBehaviour
     public static bool isPlacing = false;
     public static bool isPlaying = false;
     public GameObject roundWinner;
-    public int numPlayersAlive;
+    public static int numPlayersAlive;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        numPlayersAlive = players.Length;
     }
 
     // Update is called once per frame
@@ -81,31 +81,31 @@ public class MangerScript : MonoBehaviour
         }
         if (isPlaying)
         {
-            for(int i = 0; i < players.Length; i++)
+            /*for(int i = 0; i < players.Length; i++)
             {
-                if(players[i].activeSelf == true)
+                if(players[i].activeSelf == false)
                 {
-                    //if(numPlayersAlive > 1) {
-                        allPlayersDead = false;
-                        break;
-                    //}
-                    //if (numPlayersAlive == 1)
-                    //{
-                        //numPlayersAlive = 2;
-                        //roundWinner = players[i];
-                        //allPlayersDead = true;
-                        //break;
-                    //}
+                    Debug.Log(players[i].ToString());
+                    numPlayersAlive--;
                 }
-                //else
-                //{
-                //    numPlayersAlive--;
-                //}
+            }*/
+            if(numPlayersAlive == 1)
+            {
+                numPlayersAlive = players.Length;
                 allPlayersDead = true;
+                numPlayersAlive = 2;
+                for(int i = 0; i < players.Length; i++)
+                {
+                    if (players[i].activeSelf == true)
+                    {
+                        roundWinner = players[i];
+                        players[i].SetActive(false);
+                    }
+                }
             }
             if (allPlayersDead)
             {
-                //Debug.Log(roundWinner.ToString());
+                Debug.Log(roundWinner.ToString());
                 PauseManager.isPaused = true;
                 spawner.SetActive(true);
                 spawner.GetComponent<StuffSpawnerScript>().spawnStuff();
