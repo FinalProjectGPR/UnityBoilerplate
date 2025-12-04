@@ -107,6 +107,8 @@ public class PlayerMovementScript : MonoBehaviour
         maxPlayerHP -= amount;
         if(maxPlayerHP <= 0)
         {
+            MangerScript.numPlayersAlive--;
+            Debug.Log(gameObject.ToString());
             gameObject.SetActive(false);
         }
     }
