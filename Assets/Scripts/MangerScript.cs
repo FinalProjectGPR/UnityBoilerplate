@@ -13,6 +13,8 @@ public class MangerScript : MonoBehaviour
     public static bool isSelecting = true;
     public static bool isPlacing = false;
     public static bool isPlaying = false;
+    public GameObject roundWinner;
+    public int numPlayersAlive;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +32,7 @@ public class MangerScript : MonoBehaviour
             {
                 if (cursors[i].activeSelf == true)
                 {
+                    allPlayersSelected = false;
                     break;
                 }
                 allPlayersSelected = true;
@@ -63,6 +66,7 @@ public class MangerScript : MonoBehaviour
             {
                 if (cursors[i].activeSelf == true)
                 {
+                    allPlayersPlaced = false;
                     break;
                 }
                 allPlayersPlaced = true;
@@ -81,12 +85,27 @@ public class MangerScript : MonoBehaviour
             {
                 if(players[i].activeSelf == true)
                 {
-                    break;
+                    //if(numPlayersAlive > 1) {
+                        allPlayersDead = false;
+                        break;
+                    //}
+                    //if (numPlayersAlive == 1)
+                    //{
+                        //numPlayersAlive = 2;
+                        //roundWinner = players[i];
+                        //allPlayersDead = true;
+                        //break;
+                    //}
                 }
+                //else
+                //{
+                //    numPlayersAlive--;
+                //}
                 allPlayersDead = true;
             }
             if (allPlayersDead)
             {
+                //Debug.Log(roundWinner.ToString());
                 PauseManager.isPaused = true;
                 spawner.SetActive(true);
                 spawner.GetComponent<StuffSpawnerScript>().spawnStuff();
